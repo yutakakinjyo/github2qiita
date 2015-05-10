@@ -13,5 +13,6 @@ $ sudo gem install dotenv
 `$ mv .env.sample .env`
 
 ```
+# .env
 QIITA_ACCESS_TOKEN="<your qiita access token>"
 ```
