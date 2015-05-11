@@ -4,5 +4,17 @@ require 'dotenv'
 Dotenv.load
 
 client = Qiita::Client.new(access_token: ENV['QIITA_ACCESS_TOKEN'])
-params = {:body => "# Example", :title => "hello world", :tags => [{:name => "test"}]}
+
+file = open(ARGV[0])
+title = file.first
+
+/#*\s*(.*)/ =~ title
+title = $1
+
+file.seek(0,:SET)
+
+body = file.read
+file.close
+
+params = {:body => body, :title => title, :tags => [{:name => "hogetest"}]}
 client.create_item(params)
